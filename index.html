@@ -8,7 +8,7 @@
     <title>Qwan Ki Do - Vo Dai</title>
     <link href="dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="dist/css/style.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="dist/css/style.css?ver=2" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
 
@@ -41,8 +41,16 @@
                             <td><input type="number" id="pauseTime" value="120"></td>
                         </tr>
                         <tr>
-                            <td> <label for="round">Incepe din repriza:</label></td>
-                            <td>  <input type="number" id="roundCount" max="2" value="1"></td>
+                        <tr>
+                            <td>  <label for="languageSelect"><label for="languageSelect">Select Language:</label></td>
+                            <td>
+                                <select id="languageSelect">
+                                    <option value="en">English</option>
+                                    <option value="ro">Română</option>
+                                    <option value="it">Italiano</option>
+                                    <option value="fr">Français</option>
+                                    <option value="de">Deutsch</option>
+                                </select></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -87,9 +95,7 @@
                 0
             </div>
             <div>
-
                     <button class="ko btn btn-danger red">KO</button>
-
             </div>
 
         </div>
@@ -109,7 +115,7 @@
         <div class="col-4 info Red row">
             <div class="col-6">
                 <div>
-                    <span>Iesiri:</span> <span class="outInfo Red">0</span>
+                    <span class="out">Iesiri:</span> <span class="outInfo Red">0</span>
                 </div>
                 <div>
                     <button class="btn btn-dark out add red">Adauga</button>
@@ -118,7 +124,7 @@
             </div>
             <div class="col-6">
                 <div>
-                    <span>Penalizari:</span> <span class="penaltyInfo Red">0</span>
+                    <span class="penalty">Penalizari:</span> <span class="penaltyInfo Red">0</span>
                 </div>
                 <div>
                     <button class="btn btn-dark penalty add red">Adauga</button>
@@ -151,7 +157,7 @@
 
             <div class="col-6">
                 <div>
-                    <span>Iesiri:</span> <span class="outInfo Blue">0</span>
+                    <span class="out">Iesiri:</span> <span class="outInfo Blue">0</span>
                 </div>
                 <div>
 
@@ -161,7 +167,7 @@
             </div>
             <div class="col-6">
                 <div>
-                    <span>Penalizari:</span> <span class="penaltyInfo Blue">0</span>
+                    <span class="penalty">Penalizari:</span> <span class="penaltyInfo Blue">0</span>
                 </div>
                 <div>
 
@@ -188,7 +194,9 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 <script src="dist/js/jquery.min.js"></script>
-<script src="dist/js/script.js"></script>
+<script src="dist/js/script.js?ver=2"></script>
+<script src="dist/js/translations.js"></script>
+
 
 </body>
 </html>

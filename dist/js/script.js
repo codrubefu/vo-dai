@@ -7,25 +7,86 @@ let timeRemaining = 1;
 let started = false;
 let round1OutRed = 0;
 let round1OutBlue = 0;
+let lang = 'en';
 
+// Save variables to local storage
+function saveToLocalStorage() {
+    localStorage.setItem('roundTimeRemaining', roundTimeRemaining);
+    localStorage.setItem('pauseTimePause', pauseTimePause);
+    localStorage.setItem('round', round);
+    localStorage.setItem('lang', lang);
+    setTimer();
+}
 
+// Load variables from local storage
+function loadFromLocalStorage() {
+    roundTimeRemaining = parseInt(localStorage.getItem('roundTimeRemaining'), 10) || 180;
+    pauseTimePause = parseInt(localStorage.getItem('pauseTimePause'), 10) || 120;
+    lang = localStorage.getItem('lang') || 'ro';
 
-$('#applyConfig').click( function() {
+    $('#roundTime').val(roundTimeRemaining);
+    $('#pauseTime').val(pauseTimePause);
 
-    roundTimeRemaining = parseInt($('#roundTime').val(), 10);
+    setTimer();
+}
 
+function setTimer(){
     const minutes = String(Math.floor(roundTimeRemaining / 60)).padStart(2, '0');
     const seconds = String(roundTimeRemaining % 60).padStart(2, '0');
     timerElement = document.getElementById('timer');
     timerElement.textContent = `${minutes}:${seconds}`;
+}
 
+$(document).ready(function () {
+    loadFromLocalStorage();
+
+    const languageSelector = $("#languageSelect");
+
+    // Set the default language to English
+    applyTranslations(languageSelector.val());
+
+    // Add event listener for language change
+    languageSelector.on("change", function () {
+        applyTranslations($(this).val());
+    });
+
+    languageSelector.val(lang);
+
+    applyTranslations(lang);
+});
+
+// Function to apply translations
+function applyTranslations(lang) {
+    $(".restart").text(translations[lang].restart);
+    $(".setting").text(translations[lang].settings);
+    $("#configModalLabel").text(translations[lang].configPanel);
+    $("label[for='roundTime']").text(translations[lang].roundTime);
+    $("label[for='pauseTime']").text(translations[lang].pauseTime);
+    $("#applyConfig").text(translations[lang].save);
+    $("#configModal .btn-secondary").text(translations[lang].close);
+    $("#logModalLabel").text(translations[lang].warning);
+    $("#round").text(`${translations[lang].round}: 1`);
+    $(".info span.out").prev().text(translations[lang].exits);
+    $(".info span.penalty").prev().text(translations[lang].penalties);
+    $(".out.add").text(translations[lang].add);
+    $(".out.delete").text(translations[lang].remove);
+    $(".penalty.add").text(translations[lang].add);
+    $(".penalty.delete").text(translations[lang].remove);
+    $("#scorR1Red").prev().text(translations[lang].scoreRound1);
+    $("#scorR2Red").prev().text(translations[lang].scoreRound2);
+    $("#scorR1Blue").prev().text(translations[lang].scoreRound1);
+    $("#scorR2Blue").prev().text(translations[lang].scoreRound2);
+    $(".ko").text(translations[lang].ko);
+    $("#startStopButton").text(translations[lang].start);
+}
+
+$('#applyConfig').click( function() {
+
+    roundTimeRemaining = parseInt($('#roundTime').val(), 10);
     pauseTimePause = parseInt($('#pauseTime').val(), 10);
-    round = parseInt($('#roundCount').val(), 10);
-    if (round === 1) {
-        $('#round').text('Repriza 1');
-    }else{
-        $('#round').text('Repriza 2');
-    }
+    lang = $('#languageSelect').val();
+
+    saveToLocalStorage();
 });
 
 
@@ -38,9 +99,9 @@ function startCountdown() {
              timeRemaining = realRoundTimeRemaining;
         }
         if (round === 1) {
-            $('#round').text('Repriza 1');
+            $('#round').text(translations[lang].round + ': 1');
         }else{
-            $('#round').text('Repriza 2');
+            $('#round').text(translations[lang].round + ': 2');
         }
 
     countdownInterval = setInterval(() => {
@@ -52,7 +113,7 @@ function startCountdown() {
                 timeRemaining = realPauseTimePause;
                 isRunning = true;
 
-                $('#round').text('Pauza');
+                $('#round').text(translations[lang].timerPause );
                 round = 0;
 
                 let round1OutRedCount = parseFloat($('span.outInfo.Red').text());
@@ -77,7 +138,7 @@ function startCountdown() {
                 }
                 $('span.outInfo.Blue').text(0);
             } else if (round === 0) {
-                $('#round').text('Repriza 2');
+                $('#round').text(translations[lang].round+' 2');
                 timeRemaining = realRoundTimeRemaining;
                 round = 2;
             }else{
@@ -95,11 +156,11 @@ $('#startStopButton').click(function () {
 
     if (isRunning) {
         clearInterval(countdownInterval);
-        $('#startStopButton').text('Start Timer');
+        $('#startStopButton').text(translations[lang].timerStart);
         $('.ko').show();
     } else {
         startCountdown();
-        $('#startStopButton').text('Pause Timer');
+        $('#startStopButton').text(translations[lang].timerPause);
         $('.ko').hide();
     }
     started = true;
@@ -165,7 +226,7 @@ $(document).ready(function () {
         let outContainer = $(this).closest('.info').find('span.outInfo');
         let initial = parseFloat(outContainer.text());
         if (initial + 1 >= 5) {
-            setLog('Sportivul are 5 iesiri');
+            setLog(translations[lang].outMessage);
             return;
         }
         outContainer.text(initial + 1);
@@ -188,7 +249,7 @@ $(document).ready(function () {
         outContainer.text(penaltyTotal);
         calculate($(this));
         if(penaltyTotal >= 3){
-            setLog('Sportivul are 3 penalizari');
+            setLog(translations[lang].penaltiesMessage);
         }
     });
 

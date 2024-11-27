@@ -102,6 +102,7 @@ body {
     border: 0 !important;
     font-size: 3vh;
     font-weight: bold;
+    width: 30px !important;
 }
 
 .ko {
