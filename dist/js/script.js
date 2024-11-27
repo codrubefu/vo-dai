@@ -132,7 +132,6 @@ $(document).ready(function () {
         let penalty = parseFloat(penaltyInfo.text());
         let outPenalty = 0;
         if (out === 5) {
-
             outPenalty = 3
         }
         if (out === 4) {
@@ -165,7 +164,7 @@ $(document).ready(function () {
     $('.info .out.add').click(function () {
         let outContainer = $(this).closest('.info').find('span.outInfo');
         let initial = parseFloat(outContainer.text());
-        if (initial >= 5) {
+        if (initial + 1 >= 5) {
             setLog('Sportivul are 5 iesiri');
             return;
         }

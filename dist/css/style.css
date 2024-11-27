@@ -66,6 +66,7 @@ body {
     line-height: 55vh; /* Adjusted for visibility */
     color: #fff;
     font-weight: bold;
+    overflow: hidden;
 }
 
 #timer {
