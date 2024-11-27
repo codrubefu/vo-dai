@@ -1,0 +1,115 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+}
+
+
+
+.repriza-info {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    text-align: center;
+}
+
+.score-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh; /* Use viewport height */
+}
+
+.score-card-score {
+    flex: 0 0 70%; /* 70% height */
+}
+
+.score-card-info {
+    flex: 0 0 30%; /* 30% height */
+}
+
+
+
+.score-card,
+.score-card > div {
+    height: 80%;
+    margin: 0 !important;
+}
+
+.red {
+    background: red;
+    height: 50%;
+}
+
+.blue {
+    background: blue;
+    height: 50%;
+}
+
+.player {
+    height: 100%;
+}
+
+.player .score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55vh; /* Adjusted for visibility */
+    line-height: 55vh; /* Adjusted for visibility */
+    color: #fff;
+    font-weight: bold;
+}
+
+#timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15vh; /* Adjusted for visibility */
+    font-weight: bold;
+}
+
+.info.row {
+    margin: 0 !important;
+}
+
+.info span {
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+.timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 50px;
+}
+
+.scorClass {
+    background: #fff !important;
+    border: 0 !important;
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+.ko {
+    width: 100%;
+    display: none;
+}
+
+.settings {
+    z-index: 9999;
+    display: inline;
+    padding: 10px;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qwan Ki Do - Vo Dai</title>
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="dist/css/style.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="d-flex justify-content-between settings">
+    <button type="button" class="restart btn btn-primary" >
+        Restart
+    </button>
+    <button type="button" class="setting btn btn-primary" data-bs-toggle="modal" data-bs-target="#configModal">
+        Setari
+    </button>
+</div>
+<!-- Modal structure -->
+<div class="modal fade" id="configModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="configModalLabel">Configuration Panel</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Move the configPanel content here -->
+                <div id="configPanel">
+                    <table>
+                        <tr>
+                            <td>  <label for="roundTime">Durapa repriza (secunde):</label></td>
+                            <td> <input type="number" id="roundTime" value="180"></td>
+                        </tr>
+                        <tr>
+                            <td>  <label for="pauseTime">Durapa pauza (secunde):</label></td>
+                            <td><input type="number" id="pauseTime" value="120"></td>
+                        </tr>
+                        <tr>
+                            <td> <label for="round">Incepe din repriza:</label></td>
+                            <td>  <input type="number" id="roundCount" max="2" value="1"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button id="applyConfig" class="btn btn-primary">Salveaza</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="logModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logModalLabel">Atentie</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Move the configPanel content here -->
+                <div id="alert">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="repriza-info">
+    <h1 id="round">Repriza: 1</h1>
+</div>
+<div class="score-card">
+    <div class="row clearfix  score-card-score">
+        <div class="col-6 red player">
+            <div class="score" id="scorRed">
+                0
+            </div>
+            <div>
+
+                    <button class="ko btn btn-danger red">KO</button>
+
+            </div>
+
+        </div>
+
+        <div class="col-6 blue player">
+            <div class="score" id="scorBlue">
+                0
+            </div>
+            <div>
+
+                <button class="ko btn btn-danger blue">KO</button>
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix row score-card-info">
+        <div class="col-4 info Red row">
+            <div class="col-6">
+                <div>
+                    <span>Iesiri:</span> <span class="outInfo Red">0</span>
+                </div>
+                <div>
+                    <button class="btn btn-dark out add red">Adauga</button>
+                    <button class="btn btn-danger out delete red">Sterge</button>
+                </div>
+            </div>
+            <div class="col-6">
+                <div>
+                    <span>Penalizari:</span> <span class="penaltyInfo Red">0</span>
+                </div>
+                <div>
+                    <button class="btn btn-dark penalty add red">Adauga</button>
+                    <button class="btn btn-danger penalty delete red">Sterge</button>
+                </div>
+            </div>
+            <div class="col-12">
+                <div>
+                    <span>Scor repriza 1:</span> <input  class="scorClass red" type="text" value="0" id="scorR1Red" >
+                </div>
+            </div>
+            <div class="col-12">
+                <div>
+                    <span>Scor repriza 2:</span> <input class="scorClass red" type="text" value="0" id="scorR2Red" >
+                </div>
+            </div>
+        </div>
+        <div class="col-4 timer-container">
+            <div id="timer" class="timer">
+                03:00
+            </div>
+            <div class="button-container">
+                <div>
+                    <button id="startStopButton" class="btn btn-primary">Start</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 info Blue row">
+
+            <div class="col-6">
+                <div>
+                    <span>Iesiri:</span> <span class="outInfo Blue">0</span>
+                </div>
+                <div>
+
+                    <button class="btn btn-dark out add blue">Adauga</button>
+                    <button class="btn btn-danger out delete blue">Sterge</button>
+                </div>
+            </div>
+            <div class="col-6">
+                <div>
+                    <span>Penalizari:</span> <span class="penaltyInfo Blue">0</span>
+                </div>
+                <div>
+
+                    <button class="btn btn-dark penalty add blue">Adauga</button>
+                    <button class="btn btn-danger penalty delete blue">Sterge</button>
+                </div>
+            </div>
+            <div class="col-12">
+                <div>
+                    <span>Scor repriza 1:</span> <input class="scorClass blue" type="text" value="0" id="scorR1Blue" >
+                </div>
+            </div>
+            <div class="col-12">
+                <div>
+                    <span>Scor repriza 2:</span> <input class="scorClass blue" type="text" value="0" id="scorR2Blue" >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="dist/js/jquery.min.js"></script>
+<script src="dist/js/script.js"></script>
+
+</body>
+</html>
