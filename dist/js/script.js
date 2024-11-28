@@ -7,7 +7,25 @@ let timeRemaining = 1;
 let started = false;
 let round1OutRed = 0;
 let round1OutBlue = 0;
-let lang = 'en';
+let lang =  'en';
+
+
+// Function to get URL parameter
+function setLangBaseOnParameter() {
+    name = 'lang';
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    if(results !== null){
+        let ulrLang = decodeURIComponent(results[1].replace(/\+/g, ' '));
+
+        if(ulrLang !== null){
+            localStorage.setItem('lang', ulrLang);
+            location.replace(window.location.pathname);
+        }
+    }
+
+}
+
 
 // Save variables to local storage
 function saveToLocalStorage() {
@@ -22,7 +40,7 @@ function saveToLocalStorage() {
 function loadFromLocalStorage() {
     roundTimeRemaining = parseInt(localStorage.getItem('roundTimeRemaining'), 10) || 180;
     pauseTimePause = parseInt(localStorage.getItem('pauseTimePause'), 10) || 120;
-    lang = localStorage.getItem('lang') || 'ro';
+    lang = localStorage.getItem('lang') || 'en';
 
     $('#roundTime').val(roundTimeRemaining);
     $('#pauseTime').val(pauseTimePause);
@@ -38,6 +56,7 @@ function setTimer(){
 }
 
 $(document).ready(function () {
+    setLangBaseOnParameter();
     loadFromLocalStorage();
     const languageSelector = $("#languageSelect");
 
