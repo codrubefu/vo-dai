@@ -21,6 +21,7 @@ const translations = {
         timerStart: "Start",
         outMessage: "Fighter has 5 exits",
         penaltiesMessage: "Fighter has 3 penalties",
+        finishMessage: "Match is finished",
     },
     ro: {
         restart: "Restart",
@@ -44,6 +45,7 @@ const translations = {
         timerStart: "Start",
         outMessage: "Sportivul are 5 ieșiri",
         penaltiesMessage: "Sportivul are 3 penalizări",
+        finishMessage: "Meciul s-a terminat",
     },
     it: {
         restart: "Riavvia",
@@ -67,6 +69,7 @@ const translations = {
         timerStart: "Avvia",
         outMessage: "Il combattente ha 5 uscite",
         penaltiesMessage: "Il combattente ha 3 penalità",
+        finishMessage: "Il match è finito",
     },
     de: {
         restart: "Neustart",
@@ -90,6 +93,7 @@ const translations = {
         timerStart: "Starten",
         outMessage: "Kämpfer hat 5 Ausstiege",
         penaltiesMessage: "Kämpfer hat 3 Strafen",
+        finishMessage: "Der Kampf ist vorbei",
     },
     fr: {
         restart: "Redémarrer",
@@ -113,5 +117,6 @@ const translations = {
         timerStart: "Démarrer",
         outMessage: "Le combattant a 5 sorties",
         penaltiesMessage: "Le combattant a 3 pénalités",
+        finishMessage: "Le match est terminé",
     },
 };

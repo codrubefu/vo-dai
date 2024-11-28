@@ -39,7 +39,6 @@ function setTimer(){
 
 $(document).ready(function () {
     loadFromLocalStorage();
-
     const languageSelector = $("#languageSelect");
 
     // Set the default language to English
@@ -66,8 +65,8 @@ function applyTranslations(lang) {
     $("#configModal .btn-secondary").text(translations[lang].close);
     $("#logModalLabel").text(translations[lang].warning);
     $("#round").text(`${translations[lang].round}: 1`);
-    $(".info span.out").prev().text(translations[lang].exits);
-    $(".info span.penalty").prev().text(translations[lang].penalties);
+    $(".info span.out").text(translations[lang].exits);
+    $(".info span.penalty").text(translations[lang].penalties);
     $(".out.add").text(translations[lang].add);
     $(".out.delete").text(translations[lang].remove);
     $(".penalty.add").text(translations[lang].add);
@@ -142,9 +141,9 @@ function startCountdown() {
                 timeRemaining = realRoundTimeRemaining;
                 round = 2;
             }else{
-
                 isRunning = false;
                 clearInterval(countdownInterval);
+                setLog(translations[lang].finishMessage);
             }
         } else {
             timeRemaining--;
