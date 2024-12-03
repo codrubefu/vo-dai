@@ -68,10 +68,17 @@ $(document).ready(function () {
         applyTranslations($(this).val());
     });
 
+    $('#timer').click(function () {
+        $(this).toggleClass('big');
+        $('.score-card-score').toggleClass('big');
+    });
+
     languageSelector.val(lang);
 
     applyTranslations(lang);
 });
+
+
 
 // Function to apply translations
 function applyTranslations(lang) {
@@ -176,6 +183,8 @@ $('#startStopButton').click(function () {
         clearInterval(countdownInterval);
         $('#startStopButton').text(translations[lang].timerStart);
         $('.ko').show();
+        $('.score-card-score').removeClass('big');
+        $('#timer').removeClass('big');
     } else {
         startCountdown();
         $('#startStopButton').text(translations[lang].timerPause);
